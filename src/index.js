@@ -1,12 +1,11 @@
-// index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App'; // Importa el componente App desde App.js
-import './index.js';
+import App from './App';
+import './index.js'; // Importa el archivo CSS
 
 ReactDOM.render(
   <React.StrictMode>
-    <App /> {/* Renderiza el componente App */}
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
