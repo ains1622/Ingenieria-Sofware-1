@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agregar Artículo</title>
+  <title>Admin - Página de Ventas de Deportes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,27 +12,75 @@
       margin: 0;
       padding: 0;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       height: 100%;
+      border: 10px solid #333;
     }
     .header {
-      background-color: rgb(251 212 146);
-      height: 50px;
+      background-color: rgb(239, 185, 90);
+      height: 70px;
       width: 100%;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      color: #fff;
+      font-size: 24px;
+      padding-left: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar {
+      background-color: #333;
+      width: 200px;
+      height: calc(100% - 80px);
+      position: fixed;
+      top: 80px;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+    .sidebar a:hover {
+      background-color: #444;
+    }
+    .sidebar a i {
+      margin-right: 10px;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+      width: calc(100% - 220px);
+      box-sizing: border-box;
+    }
+    .footer {
+      background-color: #333;
+      height: 150px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+    }
+    .footer p {
+      font-size: 18px;
+      text-align: center;
     }
     .form-container {
       background-color: #fff;
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 400px;
-      max-width: 90%;
-      margin-top: 20px;
       margin-bottom: 20px;
-      margin-right: 20px;
-      overflow-y: auto;
-      margin-left: auto;
     }
     .form-container h2 {
       margin-top: 0;
@@ -46,61 +95,63 @@
     }
     .form-group input,
     .form-group textarea {
-      width: 90%;
+      width: 100%;
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
     .form-group button {
-      width: 90%;
+      width: 100%;
       padding: 10px;
       border: none;
-      background-color: rgb(251 212 146);
+      background-color: #3e92cc;
       color: #fff;
       border-radius: 5px;
       cursor: pointer;
     }
     .form-group button:hover {
-      background-color: rgb(223 171 82);
+      background-color: #244e70;
     }
-    .footer {
-      background-color: #e0e0e0;
-      height: 100px;
-      width: 100%;
-      margin-top: auto;
+    .dropdown {
+      display: none;
+      flex-direction: column;
+      margin-left: 20px;
+    }
+    .sidebar a.products:hover + .dropdown,
+    .dropdown:hover {
+      display: flex;
+    }
+    .sidebar a.products .fa-chevron-down {
+      transition: transform 0.3s;
+    }
+    .sidebar a.products:hover .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+    .dropdown a {
+      padding-left: 30px;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <div class="header"></div>
-  <div class="form-container">
-    <h2>Agregar Artículo</h2>
-    <form>
-      <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="price">Precio:</label>
-        <input type="number" id="price" name="price" required>
-      </div>
-      <div class="form-group">
-        <label for="description">Descripción:</label>
-        <textarea id="description" name="description" rows="4" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="photo">Foto:</label>
-        <input type="file" id="photo" name="photo" accept="image/*" required>
-      </div>
-      <div class="form-group">
-        <label for="variants">Variantes:</label>
-        <input type="text" id="variants" name="variants" placeholder="Ej: Rojo, Azul, Verde">
-      </div>
-      <div class="form-group">
-        <button type="button">Agregar Artículo</button>
-      </div>
-    </form>
+  <div class="header">Panel de Administración</div>
+  <div class="sidebar">
+    <a href="#"><i class="fas fa-home"></i> Inicio</a>
+    <a href="#"><i class="fas fa-box"></i> Órdenes</a>
+    <a href="#"><i class="fas fa-edit"></i> Edición de la Pagina</a>
+    <a href="#"><i class="fas fa-credit-card"></i> Pagos</a>
+    <a href="#"><i class="fas fa-comments"></i> Atención al Cliente</a>
+    <a href="#" class="products"><i class="fas fa-boxes"></i> Productos <i class="fas fa-chevron-down"></i></a>
+    <div class="dropdown">
+      <a href="#"><i class="fas fa-plus"></i> Agregar</a>
+      <a href="#"><i class="fas fa-edit"></i> Editar</a>
+    </div>
+    <a href="#"><i class="fas fa-history"></i> Historial de Ventas</a>
+    <a href="#"><i class="fas fa-store"></i> Mi Tienda</a>
+    <a href="#"><i class="fas fa-tools"></i> Soporte Técnico</a>
   </div>
-  <div class="footer"></div>
+  <div class="footer">
+    <p>&copy; 2024 Venta de Artículos Deportivos. Todos los derechos reservados no como Aurelio el criminal.</p>
+  </div>
 </body>
 </html>
